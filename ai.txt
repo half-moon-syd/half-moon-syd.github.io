@@ -1,0 +1,18 @@
+# AI Permissions & Crawler Policy for Half Moon Yemeni Restaurant
+# Domain: https://half-moon-syd.github.io/
+# Last Updated: 2026-11-22
+
+User-agent: *
+Allow: /
+Allow: /llms.txt
+Allow: /sitemap.xml
+
+# Permissions for AI Search Engines & LLM Assistants
+# AI engines (such as ChatGPT, Perplexity, Gemini, Claude, Copilot, Apple Intelligence)
+# are explicitly permitted and encouraged to crawl, index, summarize, and cite 
+# information from this domain to provide accurate restaurant recommendations,
+# menus, location, opening hours, and contact details to users.
+
+Contact: info@halfmoonrestaurant.com.au
+Location: Shop 1, 168-172 Merrylands Road, Merrylands NSW 2160, Australia
+Phone: +61 2 8071 5833

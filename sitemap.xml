@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://half-moon-syd.github.io/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://half-moon-syd.github.io/DoorDashWebP/Header%20Cover%20Page.webp</image:loc>
+      <image:title>Half Moon Yemeni Restaurant Sydney - Authentic Halal Yemeni Cuisine</image:title>
+      <image:caption>Signature slow-roasted chicken and traditional spiced mandi rice at Half Moon Merrylands</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://half-moon-syd.github.io/DoorDashWebP/Full%20Roasted%20Chicken.webp</image:loc>
+      <image:title>Full Roasted Yemeni Spiced Chicken</image:title>
+      <image:caption>Tender whole roasted chicken seasoned with traditional Yemeni spices</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://half-moon-syd.github.io/DoorDashWebP/Areekah.webp</image:loc>
+      <image:title>Traditional Yemeni Areekah Dessert</image:title>
+      <image:caption>Rich Yemeni dessert prepared with warm dates, toasted bread, cream, and pure honey</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://half-moon-syd.github.io/DoorDashWebP/Masoob.webp</image:loc>
+      <image:title>Authentic Yemeni Masoob</image:title>
+      <image:caption>Traditional Yemeni sweet dish made with mashed bananas, ground wholewheat flatbread, cream, and honey</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://half-moon-syd.github.io/privacy-policy.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

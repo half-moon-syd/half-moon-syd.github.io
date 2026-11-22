@@ -1,0 +1,37 @@
+# Robots.txt for Half Moon Yemeni Restaurant Sydney
+# Canonical URL: https://half-moon-syd.github.io/
+# Allows standard search engine crawlers and AI search agents to index all content.
+
+User-agent: *
+Allow: /
+
+# AI Crawlers & Answer Engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap Location
+Sitemap: https://half-moon-syd.github.io/sitemap.xml
