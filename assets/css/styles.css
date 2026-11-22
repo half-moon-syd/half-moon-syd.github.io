@@ -2,7 +2,7 @@
  * Half Moon Yemeni Restaurant - Primary Stylesheet
  * Location: Shop 1, 168-172 Merrylands Road, Merrylands NSW 2160, Sydney
  * Theme: Luxury Dark Charcoal & Warm Yemeni Amber Gold
- * Standards: WCAG AAA / AA Accessible Contrast, Zero-Layout-Shift, 100 Lighthouse
+ * Standards: WCAG AAA / AA Accessible Contrast, Zero-Layout-Shift, 100 Lighthouse, Mobile-First
  */
 
 /* ==========================================================================
@@ -69,6 +69,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
   -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
 }
 
 body {
@@ -107,15 +108,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: clamp(2rem, 4.5vw + 1rem, 3.4rem);
+  font-size: clamp(1.85rem, 4.5vw + 0.8rem, 3.4rem);
 }
 
 h2 {
-  font-size: clamp(1.6rem, 3vw + 0.5rem, 2.4rem);
+  font-size: clamp(1.5rem, 3vw + 0.4rem, 2.4rem);
 }
 
 h3 {
-  font-size: clamp(1.2rem, 1.8vw + 0.4rem, 1.5rem);
+  font-size: clamp(1.15rem, 1.8vw + 0.35rem, 1.5rem);
 }
 
 p {
@@ -218,7 +219,9 @@ img {
   text-align: center;
   transition: all var(--transition-normal);
   border: 1px solid transparent;
-  line-height: 1;
+  line-height: 1.2;
+  min-height: 48px; /* Accessible Touch Target */
+  touch-action: manipulation;
 }
 
 .btn-primary {
@@ -263,6 +266,7 @@ img {
 .btn-sm {
   padding: 0.5rem 1rem;
   font-size: 0.85rem;
+  min-height: 40px;
 }
 
 .btn-group {
@@ -394,11 +398,13 @@ img {
   background: transparent;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  padding: 0.5rem;
+  padding: 0.6rem;
   color: var(--color-text-primary);
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  min-height: 48px;
+  min-width: 48px;
 }
 
 .mobile-nav-toggle svg {
@@ -416,11 +422,14 @@ img {
   right: 0;
   bottom: 0;
   background-color: rgba(8, 11, 17, 0.98);
-  padding: 2rem 1.5rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 2rem 1.5rem 6rem 1.5rem;
   z-index: 999;
   flex-direction: column;
   gap: 1.5rem;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   border-top: 1px solid var(--color-border);
 }
 
@@ -432,14 +441,16 @@ img {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .mobile-nav-link {
   color: var(--color-text-primary);
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 600;
   display: block;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(34, 48, 73, 0.4);
 }
 
 /* ==========================================================================
@@ -642,6 +653,7 @@ img {
   font-size: 0.95rem;
   cursor: pointer;
   transition: all var(--transition-fast);
+  min-height: 44px;
 }
 
 .menu-tab-btn:hover {
@@ -1144,6 +1156,7 @@ img {
   color: var(--color-text-muted);
   font-size: 0.92rem;
   transition: color var(--transition-fast);
+  padding: 0.2rem 0;
 }
 
 .footer-nav-link:hover {
@@ -1159,8 +1172,8 @@ img {
 }
 
 .social-icon-btn {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background-color: var(--color-bg-surface);
   border: 1px solid var(--color-border);
@@ -1203,7 +1216,7 @@ img {
 
 .footer-designer {
   color: var(--color-text-muted);
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   font-weight: 500;
 }
 
@@ -1212,6 +1225,7 @@ img {
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 3px;
+  transition: color var(--transition-fast);
 }
 
 .footer-designer a:hover {
@@ -1219,7 +1233,111 @@ img {
 }
 
 /* ==========================================================================
-   14. RESPONSIVE MEDIA QUERIES
+   14. MOBILE STICKY QUICK ACTION BAR (MOBILE ENHANCEMENT)
+   ========================================================================== */
+.mobile-bottom-bar {
+  display: none;
+}
+
+/* ==========================================================================
+   15. DELIVERY PLATFORM MODAL (MOBILE & DESKTOP)
+   ========================================================================== */
+.delivery-modal-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2000;
+  background-color: rgba(4, 6, 10, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.delivery-modal-backdrop.active {
+  display: flex;
+  opacity: 1;
+}
+
+.delivery-modal-content {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  max-width: 480px;
+  width: 100%;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.delivery-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: 0;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delivery-modal-close:hover {
+  color: #FFFFFF;
+}
+
+.delivery-modal-title {
+  font-size: 1.35rem;
+  color: var(--color-text-primary);
+}
+
+.delivery-modal-desc {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.delivery-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.delivery-partner-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  min-height: 52px;
+}
+
+.delivery-partner-link:hover {
+  border-color: var(--color-gold);
+  color: var(--color-text-gold);
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   16. RESPONSIVE MEDIA QUERIES (MOBILE COMPATIBILITY FOCUS)
    ========================================================================== */
 @media (max-width: 1024px) {
   .hero-grid {
@@ -1241,24 +1359,148 @@ img {
 }
 
 @media (max-width: 768px) {
-  .nav-desktop, .nav-actions .btn {
+  /* Prevent sticky bottom action bar from covering content */
+  body {
+    padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .section {
+    padding: 3.5rem 0;
+  }
+
+  /* Desktop Header Actions Hide */
+  .nav-desktop, 
+  .site-header .nav-actions .btn,
+  .site-header .status-indicator {
     display: none;
   }
+
   .mobile-nav-toggle {
     display: flex;
   }
+
+  /* Smooth Horizontally Scrollable Menu Tabs Ribbon */
+  .menu-nav-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 0.6rem;
+    padding: 0.25rem 0.75rem 1rem 0.75rem;
+    margin-left: calc(-1 * var(--container-padding));
+    margin-right: calc(-1 * var(--container-padding));
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    margin-bottom: 2rem;
+    scrollbar-width: none;
+  }
+
+  .menu-nav-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .menu-tab-btn {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    white-space: nowrap;
+    padding: 0.65rem 1.2rem;
+    font-size: 0.9rem;
+    min-height: 44px;
+  }
+
+  /* Grid Reductions */
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
   .footer-top-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
   .footer-bottom-bar {
     flex-direction: column;
     text-align: center;
+    gap: 1rem;
   }
-  .menu-grid {
+
+  .location-info-card {
+    padding: 1.5rem;
+  }
+
+  /* Sticky Bottom Quick Action Bar */
+  .mobile-bottom-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 990;
+    background-color: rgba(8, 11, 17, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--color-border);
+    padding: 0.4rem 0.6rem calc(0.4rem + env(safe-area-inset-bottom, 0px)) 0.6rem;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.7);
+  }
+
+  .mobile-bottom-bar .bar-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    padding: 0.45rem 0.2rem;
+    color: var(--color-text-secondary);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    min-height: 48px;
+  }
+
+  .mobile-bottom-bar .bar-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+  }
+
+  .mobile-bottom-bar .bar-btn.primary {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    color: #080B11;
+  }
+
+  .mobile-bottom-bar .bar-btn.primary svg {
+    stroke: #080B11;
+  }
+
+  .mobile-bottom-bar .bar-btn:active {
+    transform: scale(0.97);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --container-padding: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-section {
+    padding: 2.5rem 0 3.5rem 0;
+  }
+
+  .fast-facts-grid {
     grid-template-columns: 1fr;
-  }
-  .section {
-    padding: 3.5rem 0;
   }
 }

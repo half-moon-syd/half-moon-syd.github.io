@@ -2,9 +2,10 @@
  * Half Moon Yemeni Restaurant - Interactive Features
  * Location: Shop 1, 168-172 Merrylands Road, Merrylands NSW 2160, Sydney
  * Features:
- * - Live Opening Hours Indicator (Sydney Timezone Aware)
- * - Accessible Menu Category Filter
+ * - Live Opening Hours Indicator (Sydney Timezone Aware - 11:00 AM to 11:00 PM Daily)
+ * - Accessible Menu Category Filter (with mobile horizontal scroll)
  * - Mobile Navigation Drawer Toggle
+ * - Mobile Delivery Platform Modal (Uber Eats & DoorDash)
  * - Keyboard & Screen Reader Accessibility
  */
 
@@ -12,10 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initLiveHoursStatus();
   initMenuFilter();
   initMobileNav();
+  initOrderModal();
 });
 
 /* ==========================================================================
-   1. LIVE OPEN / CLOSED STATUS (SYDNEY LOCAL TIME)
+   1. LIVE OPEN / CLOSED STATUS (SYDNEY LOCAL TIME - 11 AM TO 11 PM DAILY)
    ========================================================================== */
 function initLiveHoursStatus() {
   const statusContainer = document.getElementById('live-status-pill');
@@ -28,26 +30,14 @@ function initLiveHoursStatus() {
       const sydneyTimeStr = now.toLocaleString('en-US', { timeZone: 'Australia/Sydney' });
       const sydneyDate = new Date(sydneyTimeStr);
 
-      const dayOfWeek = sydneyDate.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
       const hours = sydneyDate.getHours();
       const minutes = sydneyDate.getMinutes();
       const currentDecimalTime = hours + minutes / 60;
 
-      // Define schedule in decimal hours:
-      // Mon (1) - Thu (4): 11:00 to 23:00 (11:00 AM - 11:00 PM)
-      // Fri (5) - Sat (6): 11:00 to 24:00 (11:00 AM - Midnight)
-      // Sun (0): 11:00 to 23.99 (11:00 AM - 11:59 PM)
-      let openTime = 11.0;
-      let closeTime = 23.0;
-      let closeTimeLabel = "11:00 PM";
-
-      if (dayOfWeek === 5 || dayOfWeek === 6) {
-        closeTime = 24.0;
-        closeTimeLabel = "Midnight";
-      } else if (dayOfWeek === 0) {
-        closeTime = 23.99;
-        closeTimeLabel = "11:59 PM";
-      }
+      // Trading Schedule: 11:00 AM to 11:00 PM every single day (Monday to Sunday)
+      const openTime = 11.0;
+      const closeTime = 23.0; // 11:00 PM
+      const closeTimeLabel = "11:00 PM";
 
       const isOpen = currentDecimalTime >= openTime && currentDecimalTime < closeTime;
 
@@ -62,13 +52,13 @@ function initLiveHoursStatus() {
           <span class="status-dot closed" aria-hidden="true"></span>
           <span>Closed • Opens 11:00 AM</span>
         `;
-        statusContainer.setAttribute('title', 'Half Moon is currently closed. Re-opens at 11:00 AM.');
+        statusContainer.setAttribute('title', 'Half Moon is currently closed. Re-opens tomorrow at 11:00 AM.');
       }
     } catch (e) {
       console.warn('Status calculator fallback:', e);
       statusContainer.innerHTML = `
         <span class="status-dot" aria-hidden="true"></span>
-        <span>Open 7 Days • 11 AM 'Til Late</span>
+        <span>Open Daily • 11 AM – 11 PM</span>
       `;
     }
   }
@@ -147,6 +137,47 @@ function initMobileNav() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && drawer.classList.contains('active')) {
       toggleDrawer();
+    }
+  });
+}
+
+/* ==========================================================================
+   4. DELIVERY PLATFORM MODAL (UBER EATS & DOORDASH)
+   ========================================================================== */
+function initOrderModal() {
+  const modal = document.getElementById('delivery-modal');
+  const openButtons = document.querySelectorAll('.open-order-modal');
+  const closeButtons = document.querySelectorAll('.close-order-modal');
+
+  if (!modal) return;
+
+  function openModal(e) {
+    if (e) e.preventDefault();
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  openButtons.forEach(btn => btn.addEventListener('click', openModal));
+  closeButtons.forEach(btn => btn.addEventListener('click', closeModal));
+
+  // Close on backdrop click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
     }
   });
 }
