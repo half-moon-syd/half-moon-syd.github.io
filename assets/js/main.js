@@ -112,31 +112,44 @@ function initMenuFilter() {
 function initMobileNav() {
   const toggleBtn = document.querySelector('.mobile-nav-toggle');
   const drawer = document.querySelector('.mobile-drawer');
+  const closeBtn = document.querySelector('.drawer-close-btn');
   const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
   if (!toggleBtn || !drawer) return;
 
-  function toggleDrawer() {
-    const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-    toggleBtn.setAttribute('aria-expanded', !isExpanded);
-    drawer.classList.toggle('active');
-    document.body.style.overflow = !isExpanded ? 'hidden' : '';
+  function openDrawer() {
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    drawer.classList.add('active');
+    document.body.style.overflow = 'hidden';
   }
 
-  toggleBtn.addEventListener('click', toggleDrawer);
+  function closeDrawer() {
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    drawer.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+    if (isExpanded) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeDrawer);
+  }
 
   mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (drawer.classList.contains('active')) {
-        toggleDrawer();
-      }
-    });
+    link.addEventListener('click', closeDrawer);
   });
 
   // Close on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && drawer.classList.contains('active')) {
-      toggleDrawer();
+      closeDrawer();
     }
   });
 }

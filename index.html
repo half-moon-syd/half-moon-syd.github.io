@@ -360,23 +360,171 @@
       </div>
     </div>
 
-    <!-- Mobile Drawer Navigation -->
+    <!-- Mobile Drawer Navigation (App-Like Experience) -->
     <div id="mobile-drawer-menu" class="mobile-drawer" aria-label="Mobile Navigation Drawer">
-      <ul class="mobile-nav-links">
-        <li><a href="#menu" class="mobile-nav-link">Menu</a></li>
-        <li><a href="#about" class="mobile-nav-link">Story</a></li>
-        <li><a href="#reviews" class="mobile-nav-link">Reviews</a></li>
-        <li><a href="#location" class="mobile-nav-link">Location</a></li>
-        <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
-        <li><a href="/privacy-policy.html" class="mobile-nav-link">Privacy Policy</a></li>
-      </ul>
-      <div class="btn-group" style="flex-direction: column; width: 100%; margin-top: 1rem; gap: 0.75rem;">
-        <button type="button" class="btn btn-primary open-order-modal" style="width: 100%;">
-          Order Online (Uber Eats &amp; DoorDash)
-        </button>
-        <a href="tel:0280715833" class="btn btn-secondary" style="width: 100%;">
-          Call (02) 8071 5833
+      <!-- Drawer Top Bar with Brand & Close Button -->
+      <div class="drawer-header">
+        <a href="/" class="drawer-brand" aria-label="Half Moon Homepage">
+          <img src="/Logo/Half%20Moon%20Logo%20NBG.png" 
+               alt="Half Moon Logo" 
+               class="brand-logo" 
+               width="44" 
+               height="44" />
+          <span class="brand-title" style="font-size: 1.2rem;">HALF MOON</span>
         </a>
+        <button type="button" class="drawer-close-btn" aria-label="Close navigation menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Live Status & Dietary Badges -->
+      <div class="drawer-status-bar">
+        <div class="status-indicator">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Open Now • 11am – 11pm</span>
+        </div>
+        <div class="drawer-badge-tag">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <span>100% Halal</span>
+        </div>
+      </div>
+
+      <!-- Navigation Section Label -->
+      <div class="drawer-section-label">EXPLORE</div>
+
+      <!-- Rich Navigation Cards -->
+      <nav class="drawer-nav-list" aria-label="Mobile Navigation Links">
+        <!-- 1. Menu -->
+        <a href="#menu" class="drawer-nav-card mobile-nav-link">
+          <div class="drawer-card-icon" aria-hidden="true">🍗</div>
+          <div class="drawer-card-text">
+            <span class="drawer-card-title">Our Menu</span>
+            <span class="drawer-card-sub">Roasted chicken, spiced rice &amp; sweets</span>
+          </div>
+          <svg class="drawer-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+
+        <!-- 2. Story -->
+        <a href="#about" class="drawer-nav-card mobile-nav-link">
+          <div class="drawer-card-icon" aria-hidden="true">🏺</div>
+          <div class="drawer-card-text">
+            <span class="drawer-card-title">Our Story</span>
+            <span class="drawer-card-sub">Heritage spices &amp; Yemeni roots</span>
+          </div>
+          <svg class="drawer-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+
+        <!-- 3. Reviews -->
+        <a href="#reviews" class="drawer-nav-card mobile-nav-link">
+          <div class="drawer-card-icon" aria-hidden="true">⭐</div>
+          <div class="drawer-card-text">
+            <span class="drawer-card-title">Customer Reviews</span>
+            <span class="drawer-card-sub">4.9 ★ Rated by Sydney diners</span>
+          </div>
+          <svg class="drawer-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+
+        <!-- 4. Location -->
+        <a href="#location" class="drawer-nav-card mobile-nav-link">
+          <div class="drawer-card-icon" aria-hidden="true">📍</div>
+          <div class="drawer-card-text">
+            <span class="drawer-card-title">Location &amp; Hours</span>
+            <span class="drawer-card-sub">Shop 1, 168-172 Merrylands Rd</span>
+          </div>
+          <svg class="drawer-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+
+        <!-- 5. FAQ -->
+        <a href="#faq" class="drawer-nav-card mobile-nav-link">
+          <div class="drawer-card-icon" aria-hidden="true">❓</div>
+          <div class="drawer-card-text">
+            <span class="drawer-card-title">FAQ &amp; Dietary</span>
+            <span class="drawer-card-sub">Halal info, takeaway &amp; parking</span>
+          </div>
+          <svg class="drawer-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </nav>
+
+      <!-- 1-Tap Delivery Section -->
+      <div class="drawer-section-label">ORDER DELIVERY</div>
+      <div class="drawer-delivery-grid">
+        <a href="https://www.ubereats.com/au/store/half-moon/9OZtb5LNQ4-diaZt4UifKA?diningMode=DELIVERY&amp;sc=SEARCH_SUGGESTION" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="drawer-delivery-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          <span>Uber Eats</span>
+        </a>
+        <a href="https://www.doordash.com/en-GB/store/half-moon-merrylands-52654581/123477748/?event_type=autocomplete&amp;pickup=false" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="drawer-delivery-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+          <span>DoorDash</span>
+        </a>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="drawer-action-group">
+        <a href="tel:0280715833" class="btn btn-primary" style="width: 100%;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <span>Call (02) 8071 5833</span>
+        </a>
+        <a href="https://www.google.com.au/maps/place/Half+Moon/@-33.8369066,150.9902345,17z/data=!3m1!4b1!4m6!3m5!1s0x6b12bde5000c52fd:0xa37bdcb6dfa96678!8m2!3d-33.8369066!4d150.9902345!16s%2Fg%2F11z5cls7_1" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="btn btn-secondary" 
+           style="width: 100%;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+          </svg>
+          <span>Get Directions</span>
+        </a>
+      </div>
+
+      <!-- Social Media & Bottom Info -->
+      <div class="drawer-footer-block">
+        <div class="social-links-row" style="justify-content: center; margin-bottom: 0.75rem;">
+          <a href="https://www.instagram.com/halfmoon.aus/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Half Moon on Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/Halfmoonau/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Half Moon on Facebook">
+            <svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.595 0 9 1.583 9 4.615V8z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@halfmoon.aus" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Half Moon on TikTok">
+            <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31 0 2.57.42 3.6 1.18 1.05.78 1.83 1.87 2.22 3.12.98.07 1.95.34 2.83.82v3.62c-.93-.32-1.91-.49-2.9-.49v5.93c0 1.98-.6 3.9-1.73 5.49-1.13 1.6-2.73 2.76-4.58 3.32-1.85.57-3.83.5-5.65-.21-1.81-.7-3.32-1.99-4.32-3.66-1-1.68-1.4-3.64-1.15-5.59.25-1.95 1.15-3.74 2.57-5.11 1.42-1.37 3.26-2.21 5.24-2.4 0 .97 0 2.91 0 3.88-1.12.08-2.2.56-3.02 1.35-.83.79-1.34 1.86-1.45 3.01-.11 1.15.19 2.3.83 3.26.65.96 1.61 1.63 2.72 1.89 1.12.26 2.29.11 3.3-.43 1.02-.54 1.82-1.43 2.26-2.51.44-1.07.51-2.26.2-3.36V0h3.69z"/></svg>
+          </a>
+        </div>
+        <p class="drawer-address-text">Shop 1, 168-172 Merrylands Rd, Merrylands NSW 2160</p>
+        <p style="text-align: center; margin-top: 0.35rem;">
+          <a href="/privacy-policy.html" style="color: var(--color-text-muted); font-size: 0.8rem; text-decoration: underline;">Privacy Policy</a>
+        </p>
       </div>
     </div>
   </header>
