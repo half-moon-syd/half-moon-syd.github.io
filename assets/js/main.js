@@ -44,21 +44,21 @@ function initLiveHoursStatus() {
       if (isOpen) {
         statusContainer.innerHTML = `
           <span class="status-dot" aria-hidden="true"></span>
-          <span>Open Now • Closes ${closeTimeLabel}</span>
+          <span>Open Now</span>
         `;
-        statusContainer.setAttribute('title', `Half Moon is currently open. Closes at ${closeTimeLabel} Sydney time.`);
+        statusContainer.setAttribute('title', 'Half Moon is open today 11:00 AM – 11:00 PM');
       } else {
         statusContainer.innerHTML = `
           <span class="status-dot closed" aria-hidden="true"></span>
-          <span>Closed • Opens 11:00 AM</span>
+          <span>Closed</span>
         `;
-        statusContainer.setAttribute('title', 'Half Moon is currently closed. Re-opens tomorrow at 11:00 AM.');
+        statusContainer.setAttribute('title', 'Half Moon opens at 11:00 AM');
       }
     } catch (e) {
       console.warn('Status calculator fallback:', e);
       statusContainer.innerHTML = `
         <span class="status-dot" aria-hidden="true"></span>
-        <span>Open Daily • 11 AM – 11 PM</span>
+        <span>Open Now</span>
       `;
     }
   }
